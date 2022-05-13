@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Routes ,Route, Navigate } from "react-router-dom";
+//context
+import ProductContextProvider from "./context/ProductContextProvider";
+import CardContextProvider from "./context/CardContextProvider";
+//Component
+import Store from "./components/Store";
+import ProductDetail from "./components/ProductDetail";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ProductContextProvider>
+      <CardContextProvider>
+      <Routes>
+       <Route path="/products" element={<Store />} />
+       <Route path="/products/:id" element={<ProductDetail />} />
+       <Route path="/" element={<Navigate to='/products' />} />
+      </Routes>
+      </CardContextProvider>
+    </ProductContextProvider>
   );
 }
 
