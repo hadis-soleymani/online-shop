@@ -1,4 +1,4 @@
-import React, { useReducer,createContext } from "react";
+import React, { useReducer, createContext } from "react";
 
 const initialState = {
   selectedItems: [],
@@ -6,6 +6,18 @@ const initialState = {
   total: 0,
   checkout: false,
 };
+
+const sumItems = (items) => {
+  const itemsCounter = items.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
+  const total = items
+    .reduce((total, product) => total + product.price * product.quantity,0)
+    .toFixed(2);
+  return { itemsCounter, total };
+};
+
 const cardReducer = (state, action) => {
   switch (action.type) {
     case "ADD_ITEM":
@@ -18,6 +30,8 @@ const cardReducer = (state, action) => {
       return {
         ...state,
         selectedItems: [...state.selectedItems],
+        ...sumItems(state.selectedItems),
+        checkout:false
       };
     case "REMOVE_ITEM":
       const newSelectedItems = state.selectedItems.filter(
@@ -25,20 +39,21 @@ const cardReducer = (state, action) => {
       );
       return {
         selectedItems: [...newSelectedItems],
+        ...sumItems(newSelectedItems),
       };
     case "INCREASE":
       const indexI = state.selectedItems.findIndex(
         (item) => item.id === action.payload.id
       );
       state.selectedItems[indexI].quantity++;
-      return { ...state };
+      return { ...state, ...sumItems(state.selectedItems) };
 
     case "DECREASE":
       const indexD = state.selectedItems.findIndex(
         (item) => item.id === action.payload.id
       );
       state.selectedItems[indexD].quantity--;
-      return { ...state };
+      return { ...state, ...sumItems(state.selectedItems) };
 
     case "CHECKOUT":
       return {
@@ -58,12 +73,14 @@ const cardReducer = (state, action) => {
       return state;
   }
 };
-export const CardContext = createContext()
-const CardContextProvider = ({children}) => {
+export const CardContext = createContext();
+const CardContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cardReducer, initialState);
-  return <CardContext.Provider  value={{state,dispatch}} >
-    {children}
-  </CardContext.Provider>
+  return (
+    <CardContext.Provider value={{ state, dispatch }}>
+      {children}
+    </CardContext.Provider>
+  );
 };
 
 export default CardContextProvider;
