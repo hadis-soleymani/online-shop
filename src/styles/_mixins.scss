@@ -1,0 +1,23 @@
+@mixin textStyle($color ,$size ,$weight) {
+    color: $color;
+    font-size: $size;
+    font-weight: $weight;
+} 
+
+@mixin boxStyle {
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.1);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  @mixin media($size) {
+    @if ($size == M) {
+      @media (max-width: 768px) {
+        @content;
+      }
+    } @else if($size == L) {
+      @media (max-width: 1200px) and (min-width: 768px) {
+        @content;
+      }
+    }
+  }

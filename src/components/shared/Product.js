@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+
+import styles from '../../styles/product.module.scss'
 //Function
 import { shorten, isInCard, quantityCount } from "../../helper/functions";
 
@@ -11,16 +13,18 @@ import trash from "../../assets/icons/trash.svg";
 const Product = ({ productData }) => {
   const { state, dispatch } = useContext(CardContext);
   return (
-    <div>
-      <img src={productData.image} alt="product" style={{ width: "200px" }} />
+    <div className={styles.product}>
+      <img src={productData.image} alt="product"  />
+      <div>
       <h3>{shorten(productData.title)}</h3>
-      <p>{productData.price}</p>
+      <p>{productData.price} $</p>
 
       <div>
         <Link to={`/products/${productData.id}`}>Detail</Link>
         <div>
           {quantityCount(state, productData.id) > 1 && (
             <button
+            className={styles.increase_decrease_button}
               onClick={() =>
                 dispatch({ type: "DECREASE", payload: productData })
               }
@@ -30,6 +34,7 @@ const Product = ({ productData }) => {
           )}
           {quantityCount(state, productData.id) === 1 && (
             <button
+            className={styles.increase_decrease_button}
               onClick={() =>
                 dispatch({ type: "REMOVE_ITEM", payload: productData })
               }
@@ -43,6 +48,7 @@ const Product = ({ productData }) => {
 
           {isInCard(state, productData.id) ? (
             <button
+            className={styles.increase_decrease_button}
               onClick={() =>
                 dispatch({ type: "INCREASE", payload: productData })
               }
@@ -50,7 +56,7 @@ const Product = ({ productData }) => {
               +
             </button>
           ) : (
-            <button
+            <button className={styles.add_to_card_button}
               onClick={() =>
                 dispatch({ type: "ADD_ITEM", payload: productData })
               }
@@ -58,6 +64,7 @@ const Product = ({ productData }) => {
               add to card
             </button>
           )}
+        </div>
         </div>
       </div>
     </div>

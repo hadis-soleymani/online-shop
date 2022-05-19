@@ -1,0 +1,74 @@
+@import "variables";
+@import "mixins";
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  margin: 8rem 4rem 4rem 4rem;
+  gap: 40px;
+  width: auto;
+}
+
+.product {
+  display: flex;
+  padding: 1rem;
+  background-color: rgb(255, 255, 255);
+  align-items: center;
+  justify-content: space-between;
+  @include boxStyle;
+
+  img {
+    width: 45%;
+  }
+  p {
+    @include textStyle($primariColor, 1rem, 600);
+  }
+  h3 {
+    @include textStyle($darkText, 1.3rem, 600);
+  }
+  a {
+    display: inline-block;
+    text-decoration: none;
+    @include textStyle($buttonColor, 1.1rem, 600);
+    margin-bottom: 1rem;
+  }
+  span{
+      padding: 10px;
+  }
+}
+.add_to_card_button {
+  background-color: $buttonColor;
+  height: 3rem;
+  border: none;
+  border-radius: 10px 0 10px 0;
+  width: 8rem;
+  &:hover {
+    opacity: .7;
+  }
+  @include textStyle($lightColor, 1rem, 600);
+}
+
+.increase_decrease_button {
+  background-color: $buttonColor;
+  border: none;
+  border-radius: 10px;
+  width: 3rem;
+  height: 3rem;
+ 
+  &:hover {
+    opacity: .7;
+  }
+  @include textStyle($lightColor, 1rem, 600);
+}
+
+@include media(M) {
+  .products {
+    grid-template-columns: 1fr;
+    margin: 6rem 1rem;
+    gap: 1rem;
+  }
+  .product {
+    padding: 1rem;
+  }
+}
