@@ -1,0 +1,68 @@
+@import "variables";
+@import "mixins";
+
+.container{
+@include boxStyle;
+margin: 12rem 4rem;
+display: flex;
+align-items: center;
+background-color: $lightColor;
+padding: 2rem;
+img{
+    width: 30vw;
+    padding: 1rem;
+    
+}
+
+}
+.detail{   
+    border: 1px solid rgba(205, 207, 211,.4) ;
+    border-radius: 16px;
+    margin: 2rem;
+    padding: 2rem;
+   
+     
+    p:nth-child(1){
+        @include textStyle($darkText, 1.5rem, bold);
+       
+    }
+    p:nth-child(2){
+        @include textStyle($darkText, 1.2rem, 500);
+        text-align: justify;
+    }
+    p:nth-child(3){
+        @include textStyle($darkText, 1.1rem, 500);
+        span{
+            @include textStyle($darkText, 1.3rem, bold);
+        }
+    }
+    span{
+        @include textStyle($primariColor, 1.2rem, 600);
+    }
+    button{
+        @include buttonStyle;
+        margin-top: 1rem;
+        a{
+            text-decoration: none;
+            @include textStyle($lightColor, 1rem, 600);
+        }
+    }
+}
+
+@include media(M) {
+    .container{
+        flex-direction: column;
+        margin: 8rem 1rem 4rem 1rem;
+        img{
+            width: 70vw;
+            padding: 1rem;
+        }
+    }
+    .detail{
+
+        padding: 0;
+        margin: 0;
+        border: none;
+
+    }
+  }

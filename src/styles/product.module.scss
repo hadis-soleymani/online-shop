@@ -17,7 +17,11 @@
   align-items: center;
   justify-content: space-between;
   @include boxStyle;
-
+&:hover{
+ 
+  @include boxSadow;
+  
+}
   img {
     width: 45%;
   }
@@ -37,16 +41,9 @@
       padding: 10px;
   }
 }
+
 .add_to_card_button {
-  background-color: $buttonColor;
-  height: 3rem;
-  border: none;
-  border-radius: 10px 0 10px 0;
-  width: 8rem;
-  &:hover {
-    opacity: .7;
-  }
-  @include textStyle($lightColor, 1rem, 600);
+ @include buttonStyle;
 }
 
 .increase_decrease_button {

@@ -33,7 +33,7 @@
       line-height: 18px;
       text-align: center;
       @include boxStyle;
-      @include textStyle($darkPrimary, 1rem, 500);
+      @include textStyle($darkPrimary, 1rem, 700);
     }
   }
 }

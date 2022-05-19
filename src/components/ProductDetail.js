@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
-
+import styles from '../styles/detail.module.scss'
 //Context
 import { ProductsContext } from "../context/ProductContextProvider";
 
@@ -12,15 +12,16 @@ const ProductDetail = (props) => {
   const {title, price, description, category, image} = product;
 
   return (
-    <div>
+    <div className={styles.container}>
       <img src={image} alt="product" />
-      <div>
+      <div className={styles.detail}>
           <p>{title}</p>
           <p>{description}</p>
           <p><span>category: </span>{category}</p>
           <div>
               <span>{price} $</span>
-              <Link to='/'>back to shop</Link>
+              <br/>
+              <button ><Link to="/">back to shop</Link></button>
           </div>
       </div>
     </div>
