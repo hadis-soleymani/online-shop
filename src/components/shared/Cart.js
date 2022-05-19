@@ -5,13 +5,14 @@ import { CardContext } from "../../context/CardContextProvider";
 import { shorten } from "../../helper/functions";
 // Icons
 import trash from "../../assets/icons/trash.svg";
+import styles from '../../styles/card.module.scss'
 
 const Cart = (props) => {
   const { title, price, quantity, image } = props.data;
   const { dispatch } = useContext(CardContext);
 
   return (
-    <div>
+    <div className={styles.container}>
       <img src={image} alt="product" />
       <div>
         <h3>{shorten(title)}</h3>
@@ -23,12 +24,14 @@ const Cart = (props) => {
       <div>
         {quantity > 1 ? (
           <button
+          className={styles.increase_decrease_button}
             onClick={() => dispatch({ type: "DECREASE", payload: props.data })}
           >
             -
           </button>
         ) : (
           <button
+          className={styles.increase_decrease_button}
             onClick={() =>
               dispatch({ type: "REMOVE_ITEM", payload: props.data })
             }
@@ -38,6 +41,7 @@ const Cart = (props) => {
         )}
 
         <button
+        className={styles.increase_decrease_button}
           onClick={() => dispatch({ type: "INCREASE", payload: props.data })}
         >
           +

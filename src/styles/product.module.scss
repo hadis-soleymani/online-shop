@@ -43,19 +43,11 @@
 }
 
 .add_to_card_button {
- @include buttonStyle;
+ @include buttonStyle($buttonColor);
 }
 
 .increase_decrease_button {
-  background-color: $buttonColor;
-  border: none;
-  border-radius: 10px;
-  width: 3rem;
-  height: 3rem;
- 
-  &:hover {
-    opacity: .7;
-  }
+  @include increase_decrease_button;
   @include textStyle($lightColor, 1rem, 600);
 }
 

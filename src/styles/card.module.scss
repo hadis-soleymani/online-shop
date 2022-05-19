@@ -1,0 +1,36 @@
+@import "variables";
+@import "mixins";
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 65vw;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-top: 1rem;
+  @include border;
+  img {
+    width: 8vw;
+  }
+  p {
+    @include textStyle($primariColor, 1.2rem, 600);
+  }
+  span {
+    @include textStyle($darkText, 1.3rem, bold);
+  }
+}
+.increase_decrease_button {
+  @include increase_decrease_button;
+  @include textStyle($lightColor, 1rem, 600);
+  margin: 1rem;
+}
+
+@include media(M) {
+  .container {
+    width: 80vw;
+    flex-direction: column;
+    img {
+      width: 35vw;
+    }
+  }
+}

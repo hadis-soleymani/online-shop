@@ -1,0 +1,58 @@
+@import "variables";
+@import "mixins";
+
+.container {
+  padding: 8rem 4rem 4rem 4rem;
+  display: flex;
+  width: calc(100vw-8rem);
+  min-height: 100vh;
+
+  a {
+    text-decoration: none;
+    color: $buttonColor;
+  }
+}
+p {
+  @include textStyle($primariColor, 1.2rem, 600);
+  span {
+    @include textStyle($darkText, 1.3rem, bold);
+  }
+}
+
+.purchase_details {
+  @include border;
+  height: 30vh;
+  padding: 2rem;
+  margin: 1rem 0 0 1rem;
+  display: flex;
+  flex-direction: column;
+
+  .check_out {
+    @include buttonStyle($buttonColor);
+    margin: 1rem;
+  }
+  .clear {
+    @include buttonStyle($yellow);
+    margin: 1rem;
+  }
+}
+
+.clear_checkout_div {
+  padding: 5rem;
+  align-self: start;
+  background-color: $lightColor;
+  @include boxStyle;
+}
+
+@include media(M) {
+  .container {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 0 2rem 0;
+  }
+  .purchase_details {
+    height: 35vh;
+    padding: 3rem;
+  }
+}

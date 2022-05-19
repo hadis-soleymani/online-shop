@@ -1,39 +1,56 @@
-@mixin textStyle($color ,$size ,$weight) {
-    color: $color;
-    font-size: $size;
-    font-weight: $weight;
-} 
+@mixin textStyle($color, $size, $weight) {
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+}
 
 @mixin boxStyle {
-    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.1);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-@mixin buttonStyle{
-  background-color: $buttonColor;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+}
+@mixin buttonStyle($color) {
+  background-color: $color;
   height: 3rem;
   border: none;
   border-radius: 10px 0 10px 0;
   width: 8rem;
   @include textStyle($lightColor, 1rem, 600);
   &:hover {
-    opacity: .7;
+    opacity: 0.7;
   }
 }
 @mixin boxSadow {
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
-          rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
-          rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+@mixin border {
+  border: 1px solid rgba(205, 207, 211,.5) ;
+    border-radius: 16px;
+   
 }
 
-  @mixin media($size) {
-    @if ($size == M) {
-      @media (max-width: 768px) {
-        @content;
-      }
-    } @else if($size == L) {
-      @media (max-width: 1200px) and (min-width: 768px) {
-        @content;
-      }
+@mixin increase_decrease_button {
+  background-color: $buttonColor;
+  border: none;
+  border-radius: 10px;
+  width: 3rem;
+  height: 3rem;
+ 
+  &:hover {
+    opacity: .7;
+  }
+}
+
+@mixin media($size) {
+  @if ($size == M) {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if($size == L) {
+    @media (max-width: 1200px) and (min-width: 768px) {
+      @content;
     }
   }
+}
