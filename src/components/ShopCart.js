@@ -7,6 +7,7 @@ import Cart from "./shared/Cart";
 import styles from "../styles/shopCard.module.scss";
 
 const ShopCart = () => {
+ 
   const { state, dispatch } = useContext(CardContext);
   return (
     <div className={styles.container}>
@@ -15,7 +16,7 @@ const ShopCart = () => {
           <Cart key={item.id} data={item} />
         ))}
       </div>
-      {state.itemsCounter > 1 && (
+      {state.itemsCounter > 0 && (
         <div className={styles.purchase_details}>
           <p>
             <span>Total Items: </span>
