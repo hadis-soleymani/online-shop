@@ -25,6 +25,7 @@ const Product = ({ productData }) => {
           {quantityCount(state, productData.id) > 1 && (
             <button
             className={styles.increase_decrease_button}
+            data-testid={`product-button-decrease-${productData.id}`}
               onClick={() =>
                 dispatch({ type: "DECREASE", payload: productData })
               }
@@ -35,6 +36,7 @@ const Product = ({ productData }) => {
           {quantityCount(state, productData.id) === 1 && (
             <button
             className={styles.increase_decrease_button}
+            data-testid={`product-button-decrease-${productData.id}`}
               onClick={() =>
                 dispatch({ type: "REMOVE_ITEM", payload: productData })
               }
@@ -48,6 +50,7 @@ const Product = ({ productData }) => {
 
           {isInCard(state, productData.id) ? (
             <button
+            data-testid={`product-button-${productData.id}`}
             className={styles.increase_decrease_button}
               onClick={() =>
                 dispatch({ type: "INCREASE", payload: productData })
@@ -57,6 +60,7 @@ const Product = ({ productData }) => {
             </button>
           ) : (
             <button className={styles.add_to_card_button}
+            data-testid={`product-button-${productData.id}`}
               onClick={() =>
                 dispatch({ type: "ADD_ITEM", payload: productData })
               }
