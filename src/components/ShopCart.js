@@ -13,7 +13,7 @@ const ShopCart = () => {
     <div className={styles.container}>
       <div>
         {state.selectedItems.map((item) => (
-          <Cart key={item.id} data={item} />
+          <Cart key={item.id} data={item}  />
         ))}
       </div>
       {state.itemsCounter > 0 && (
